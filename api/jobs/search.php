@@ -15,6 +15,7 @@
  *          job_category                string      optional(Maximum is 3) list of industry ids which can be found in https://api-staging.vietnamworks.com/general/configuration/
  *          job_level                   integer     optional
  *          job_salary                  integer     optional
+ *          employer_id          array, interger    optional( list of employer id ["{employerId}","{employerId}"] or only one employer {employerId})
  *          job_benefit                 string      optional(Maximum is 3) list of industry ids which can be found in https://api-staging.vietnamworks.com/general/configuration/
  *          page_size                   integer     optional
  *          tl_type                     integer     optional Just use for techlooper client only. Value: 1 => jobs have top priority tech premium service, 2 => job have no top priority tech premium service, otherwise => both
