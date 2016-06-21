@@ -63,6 +63,7 @@ $jsonString = json_encode(array(
     'job_title' => 'keyword goes here',
     'job_location' => "24,29",
     'job_category' => "1,35",
+    'employer_id' => array(3683051,3683052),
     'job_level' => 3,
     'job_salary' => 500,
     'job_benefit' => "1,2,3",
