@@ -34,6 +34,8 @@
  *              "job_title": "Tech Engineer",
  *              "job_description": "job description",
  *              "job_requirement": "job requirement",
+ *              "number_of_views": "number of views",
+ *              "num_of_applications": "number of applications",
  *              "skills": [
  *                  {
  *                      "skillName": "Test",
