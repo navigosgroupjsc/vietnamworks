@@ -291,6 +291,7 @@ Where a Job Form object is:
 | is_show_contact | checkbox | false |  | Whether the `contact_name` is shown on job-seeker site or not.|
 | email_for_application | text | true| 255 | The email to receive job applications|
 | preferred_language  | choice | true|  | The resume's language that employer prefers when job-seeker applies|
+| redirect_to  | text  | false| 255 | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
 | job_posting_service  | choice  | true|  | The job posting service that employer purchased on Vietnamworks|
 
 Possible errors:
@@ -344,6 +345,7 @@ Content-Type: application/json; charset=utf-8
            "num_of_views": 0,
            ...
            "is_show_contact": true,
+           "redirect_to": "http://careers.rmit.edu.vn/vn/en/listing",
            "unformatted_job_title": "Sales Executive - Japanese Business Unit",
            "alias": "sales-executive-japanese-business-unit-19",
            "unformatted_company_name": "Vietnamworks",
@@ -388,6 +390,7 @@ Where a Job Posting object is:
 | job_categories | array | Array of industries of the job posting |
 | company_benefits | array | Array of benefits of the company |
 | skill_tags | array | Array of skill tags of the job posting |
+| redirect_to  | string  | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
 
 Possible errors:
 
@@ -442,6 +445,7 @@ Content-Type: application/json; charset=utf-8
       "salary_min": 700,
       "job_level_id": 5,
       "is_show_contact": true,
+      "redirect_to": "http://careers.rmit.edu.vn/vn/en/listing",
       "unformatted_job_title": "Sales Executive - Japanese Business Unit",
       "alias": "sales-executive-japanese-business-unit-19",
       "unformatted_company_name": "Vietnamworks",
@@ -484,6 +488,7 @@ Where a Job Posting object is:
 | job_categories | array | Array of industries of the job posting |
 | company_benefits | array | Array of benefits of the company |
 | skill_tags | array | Array of skill tags of the job posting |
+| redirect_to  | string  | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
 
 Possible errors:
 
@@ -548,6 +553,7 @@ Accept-Charset: utf-8
         "is_show_contact": 1,
         "email_for_application": "lan.bui@navigosgroup.com",
         "preferred_language": 2,
+        "redirect_to": "http://careers.rmit.edu.vn/vn/en/listing",
         "job_posting_service": 123
     }
 }
@@ -582,6 +588,7 @@ With the following fields:
 | is_show_contact | checkbox | required | Whether the `contact_name` is shown on job-seeker site or not.  |
 | email_for_application | string | required | The email to receive job applications. |
 | preferred_language | integer | required | The resume's language that employer prefers when job-seeker applies |
+| redirect_to  | string | optional | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
 | job_posting_service | integer | required | The job posting service id that employer purchased on VietnamWorks |
 
 The response is a location header that points to the URL of the newly created job. Example response:
@@ -689,6 +696,7 @@ With the following fields:
 | is_show_contact | checkbox | required | Whether the `contact_name` is shown on job-seeker site or not.  |
 | email_for_application | string | required | The email to receive job applications. |
 | preferred_language | integer | required | The resume's language that employer prefers when job-seeker applies |
+| redirect_to  | string | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
 
 
 The response won't be returning a body. Example response:
@@ -754,6 +762,7 @@ With the following fields:
 | is_show_contact | checkbox | Whether the `contact_name` is shown on job-seeker site or not.  |
 | email_for_application | string | The email to receive job applications. |
 | preferred_language | integer | The resume's language that employer prefers when job-seeker applies |
+| redirect_to  | string  | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
 
 The response won't be returning a body. Example response:
 
