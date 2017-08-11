@@ -283,7 +283,7 @@ Where a Job Form object is:
 | company_size | choice | true|  | Number of employees in employer company   |
 | company_address | text | true|  | The employer company’s address. |
 | company_profile | textarea | true| 10000 | Employer company information|
-| company_benefit1 | benefit  | false |  | benefit_id choice, benefit_description text to show what benefit the comapany provides|
+| company_benefit1 | benefit  | true |  | benefit_id choice, benefit_description text to show what benefit the comapany provides|
 | company_benefit2 | benefit  | false |  | benefit_id choice, benefit_description text to show what benefit the comapany provides|
 | company_benefit3 | benefit  | false |  | benefit_id choice, benefit_description text to show what benefit the comapany provides|
 | contact_name | text | true| 30 | The HR person who handles this job posting|
@@ -578,7 +578,7 @@ With the following fields:
 | company_size | integer | optional | Number of employees in employer company |
 | company_address | string | optional | The employer company’s address |
 | company_profile | string | required | The employer company information. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
-| company_benefit1 | benefit | optional | The first `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
+| company_benefit1 | benefit | required | The first `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
 | company_benefit2 | benefit | optional | The second `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
 | company_benefit3 | benefit | optional | The third `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
 | contact_name | string | required | The HR person who handles the job posting.|
@@ -684,7 +684,7 @@ With the following fields:
 | company_size | integer | optional | Number of employees in employer company |
 | company_address | string | optional | The employer company’s address |
 | company_profile | string | required | The employer company information. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
-| company_benefit1 | benefit | optional | The first `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
+| company_benefit1 | benefit | required | The first `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
 | company_benefit2 | benefit | optional | The second `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
 | company_benefit3 | benefit | optional | The third `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
 | contact_name | string | required | The HR person who handles the job posting.|
