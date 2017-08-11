@@ -271,7 +271,6 @@ Where a Job Form object is:
 | job_categories| choice | true |  | Industries of the job posting. Choose maximum 3 industries|
 | job_category_orders  | text | true  |  | The list of industries separated by commas in order of display|
 | job_locations| choice | true |  | Locations of the job posting. Choose maximum 3 cities|
-| report_to| text | true |  | This job position will report to|
 | minimum_salary| text | true |  | Salary range from|
 | maximum_salary| text | true |  | Salary range to|
 | is_show_salary| radio  | true |  | Determines whether the salary should be shown on  VietnamWorks website or not|
@@ -532,7 +531,6 @@ Accept-Charset: utf-8
             29,
             24
         ],
-        "report_to": "IT Manager",
         "minimum_salary": 700,
         "maximum_salary": 1000,
         "is_show_salary": 1,
@@ -568,7 +566,6 @@ With the following fields:
 | job_categories | integer array | required   | The industries of the job posting. At least one industry is required and maximum of 3.  |
 | job_category_orders  | integer array | required  | The order of `job_categories` list |
 | job_locations | integer array | required   | Working cities of the job. At least one city is required and maximum of 3.  |
-| report_to | string | optional | To who this position reports |
 | minimum_salary | integer | required | Salary range from in USD, which is greater than 1 and less than or equal to than `maximum_salary` |
 | maximum_salary | integer | required | Salary range to in USD, which is greater than 1 and greater than or equal to `maximum_salary` |
 | is_show_salary | integer | required | Determines whether the salary should be shown on  VietnamWorks website or not. The accepted value is [0,1] |
@@ -642,7 +639,6 @@ Accept-Charset: utf-8
             29,
             24
         ],
-        "report_to": "IT Manager",
         "minimum_salary": 700,
         "maximum_salary": 1000,
         "is_show_salary": 1,
@@ -676,7 +672,6 @@ With the following fields:
 | job_categories | integer array | required   | The industries of the job posting. At least one industry is required and maximum of 3.  |
 | job_category_orders  | integer array | required  | The order of `job_categories` list |
 | job_locations | integer array | required   | Working cities of the job. At least one city is required and maximum of 3.  |
-| report_to | string | optional | To who this position reports |
 | minimum_salary | integer | required | Salary range from in USD, which is greater than 1 and less than or equal to than `maximum_salary` |
 | maximum_salary | integer | required | Salary range to in USD, which is greater than 1 and greater than or equal to `maximum_salary` |
 | is_show_salary | integer | required | Determines whether the salary should be shown on  VietnamWorks website or not. The accepted value is [0,1] |
@@ -742,7 +737,6 @@ With the following fields:
 | job_categories | integer array |  The industries of the job posting. At least one industry is required and maximum of 3.  |
 | job_category_orders  | integer array |  The order of `job_categories` list |
 | job_locations | integer array | Working cities of the job. At least one city is required and maximum of 3.  |
-| report_to | string |  To who this position reports |
 | minimum_salary | integer |  Salary range from in USD, which is greater than 1 and less than or equal to than `maximum_salary` |
 | maximum_salary | integer |  Salary range to in USD, which is greater than 1 and greater than or equal to `maximum_salary` |
 | is_show_salary | integer | Determines whether the salary should be shown on  VietnamWorks website or not. The accepted value is [0,1] |
