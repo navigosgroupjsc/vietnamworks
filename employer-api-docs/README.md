@@ -2,9 +2,20 @@
 
 This repository contains the documentation for [Vietnamworks](http://www.vietnamworks.com)’s API.
 
+****
+#### Changelog V2 
+
+1) Change skill tag to using **Approved Skill ID** (Affect Post/Edit Job API)
+2) Extends paramater skill tag from 3 to 5
+3) **V1 will deprecated** (Post/Edit Job API)
+4) Add API to get list of Approved Skill ID [3.6 Skill Tags](#36-skill-tags)
+
+****
+
 #### Contents
 
 - [Vietnamworks’s API documentation](#vietnamworkss-api-documentation)
+      - [Changelog V2](#changelog-v2)
       - [Contents](#contents)
   - [1. Overview](#1-overview)
       - [Developer agreement](#developer-agreement)
@@ -18,12 +29,12 @@ This repository contains the documentation for [Vietnamworks](http://www.vietnam
       - [Jobs posting details](#jobs-posting-details)
     - [3.3. Posts a Job](#33-posts-a-job)
       - [Creates a job post (V2)](#creates-a-job-post-v2)
-      - [Creates a job post (V1) / (Ongoing deprecated)](#creates-a-job-post-v1--ongoing-deprecated)
+      - [Creates a job post (V1) / (Will be deprecated)](#creates-a-job-post-v1--will-be-deprecated)
     - [3.4. Edits a Job](#34-edits-a-job)
       - [Fully updates an online job post (V2)](#fully-updates-an-online-job-post-v2)
       - [Partially updates an online job post (V2)](#partially-updates-an-online-job-post-v2)
-      - [Fully updates an online job post (V1 / Ongoing Deprecated)](#fully-updates-an-online-job-post-v1--ongoing-deprecated)
-      - [Partially updates an online job post (V1 / Ongoing Deprecated](#partially-updates-an-online-job-post-v1--ongoing-deprecated)
+      - [Fully updates an online job post V1 / (Will be Deprecated)](#fully-updates-an-online-job-post-v1--will-be-deprecated)
+      - [Partially updates an online job post V1 / ( Will be Deprecated )](#partially-updates-an-online-job-post-v1---will-be-deprecated)
     - [3.5. Activates/Deactivates a Job](#35-activatesdeactivates-a-job)
       - [Actives a job](#actives-a-job)
       - [Deactives job posting](#deactives-job-posting)
@@ -519,14 +530,6 @@ Possible errors:
 
 **Scope:** `jobpost` only
 
-****
-**Important Changes**
-
-Required at least one approved skillId
-Listing of approved skill tags see  [**3.6 Skill Tags**](#36-skill-tags)
-
-****
-
 Creates a job posting on behalf of the authenticated user.
 
 ```
@@ -536,7 +539,7 @@ POST https://api.vietnamworks.com/api/rest/v2/jobs.json
 Example request:
 
 ```
-POST /api/rest/v1/jobs.json HTTP/1.1
+POST /api/rest/v2/jobs.json HTTP/1.1
 Host: api.vietnamworks.com
 Authorization: Bearer MTFmMTY2MTI2ZGQ1NGRmZDljZGFiZGQ2YzVjNGIyMGI5NTY0NDQ0MDI3M2EyMjIyNWM5ZmZiM2FmMjRhNDljMA
 Content-Type: application/json
@@ -560,9 +563,11 @@ Accept-Charset: utf-8
         "is_show_salary": 1,
         "job_description": "Analyze system and software requirements",
         "job_requirements": "Bachelor degree or above in Electrical Engineering or equivalent",
-        "skill_tag1": 24,
-        "skill_tag2": 25,
-        "skill_tag3": 26,
+        "skill_tag1": 205,
+        "skill_tag2": 207,
+        "skill_tag3": 2628,
+        "skill_tag4": 6520,
+        "skill_tag5": 7103,
         "company_name": "VietnamWorks",
         "company_size": 4,
         "company_address": "10th Floor, Golden Tower, 6 Nguyen Thi Minh Khai, District 1, HCM City.",
@@ -598,6 +603,8 @@ With the following fields:
 | skill_tag1 | integer | required | First skillId requirement of the job posting position. At least one approved skill tag is required. |
 | skill_tag2 | integer | optional | Second skillId requirement of the job posting position.  At least one approved  skill tag is required. |
 | skill_tag3 | integer | optional | Third skillId requirement of the job posting position.  At least one approved  skill tag is required. |
+| skill_tag4 | integer | optional | Fourth skillId requirement of the job posting position.  At least one approved  skill tag is required. |
+| skill_tag5 | integer | optional | Fifth skillId requirement of the job posting position.  At least one approved  skill tag is required. |
 | company_name | string | required | The employer’s company name on Vietnamworks. |
 | company_size | integer | optional | Number of employees in employer company |
 | company_address | string | optional | The employer company’s address |
@@ -629,7 +636,7 @@ Possible errors:
 | 403 Forbidden        | The user does not have permission to publish. |
 | 404 Not Found        | The `jobId` is invalid or not yours job. |
 
-#### Creates a job post (V1) / (Ongoing deprecated)
+#### Creates a job post (V1) / (Will be deprecated)
 
 **Scope:** `jobpost` only
 
@@ -741,25 +748,16 @@ Possible errors:
 
 **Scope:** `jobpost` only
 
-
-****
-**Important Changes**
-
-Required at least one approved skillId
-Listing of approved skill tags see  [**3.6 Skill Tags**](#36-skill-tags)
-
-****
-
 Fully updates an online job posting information on behalf of the authenticated user.
 
 ```
-PUT https://api.vietnamworks.com/api/rest/v1/jobs/{jobId}.json 
+PUT https://api.vietnamworks.com/api/rest/v2/jobs/{jobId}.json 
 ```
 
 Example request:
 
 ```
-PUT /api/rest/v1/jobs/{jobId}.json HTTP/1.1
+PUT /api/rest/v2/jobs/{jobId}.json HTTP/1.1
 Host: api.vietnamworks.com
 Authorization: Bearer MTFmMTY2MTI2ZGQ1NGRmZDljZGFiZGQ2YzVjNGIyMGI5NTY0NDQ0MDI3M2EyMjIyNWM5ZmZiM2FmMjRhNDljMA
 Content-Type: application/json
@@ -783,9 +781,11 @@ Accept-Charset: utf-8
         "is_show_salary": 1,
         "job_description": "Analyze system and software requirements",
         "job_requirements": "Bachelor degree or above in Electrical Engineering or equivalent",
-        "skill_tag1": 12,
-        "skill_tag2": 13,
-        "skill_tag3": 14,
+        "skill_tag1": 205,
+        "skill_tag2": 207,
+        "skill_tag3": 2628,
+        "skill_tag4": 6520,
+        "skill_tag5": 7103,
         "company_name": "VietnamWorks",
         "company_size": 4,
         "company_address": "10th Floor, Golden Tower, 6 Nguyen Thi Minh Khai, District 1, HCM City.",
@@ -819,6 +819,8 @@ With the following fields:
 | skill_tag1 | integer | required | First Approved skillId requirement of the job posting position. At least one skill tag is required. |
 | skill_tag2 | integer | optional | Second Approved skillId requirement of the job posting position. At least one skill tag is required |
 | skill_tag3 | integer | optional | Third Approved skillId requirement of the job posting position.  At least one skill tag is required. |
+| skill_tag4 | integer | optional | Fourth Approved skillId requirement of the job posting position.  At least one skill tag is required. |
+| skill_tag5 | integer | optional | Fifth Approved skillId requirement of the job posting position.  At least one skill tag is required. |
 | company_name | string | required | The employer’s company name on Vietnamworks. |
 | company_size | integer | optional | Number of employees in employer company |
 | company_address | string | optional | The employer company’s address |
@@ -845,24 +847,16 @@ Content-Type: application/json; charset=utf-8
 
 **Scope:** `jobpost` only
 
-****
-**Important Changes**
-
-Required at least one approved skillId
-Listing of approved skill tags see  [**3.6 Skill Tags**](#36-skill-tags)
-
-****
-
 Updates one field or more of an online job post on the authenticated user.
 
 ```
-PATCH https://api.vietnamworks.com/api/rest/v1/jobs/{jobId}.json 
+PATCH https://api.vietnamworks.com/api/rest/v2/jobs/{jobId}.json 
 ```
 
 Example request:
 
 ```
-PATCH /api/rest/v1/jobs/{jobId}.json HTTP/1.1
+PATCH /api/rest/v2/jobs/{jobId}.json HTTP/1.1
 Host: api.vietnamworks.com
 Authorization: Bearer MTFmMTY2MTI2ZGQ1NGRmZDljZGFiZGQ2YzVjNGIyMGI5NTY0NDQ0MDI3M2EyMjIyNWM5ZmZiM2FmMjRhNDljMA
 Content-Type: application/json
@@ -892,6 +886,8 @@ With the following fields:
 | skill_tag1 | integer |  First Approved skillId requirement of the job posting position. At least one skill tag is required. |
 | skill_tag2 | integer | Second Approved skillId requirement of the job posting position.  At least one skill tag is required. |
 | skill_tag3 | integer |  Third Approved skillId requirement of the job posting position.  At least one skill tag is required. |
+| skill_tag4 | integer |  Fourth Approved skillId requirement of the job posting position.  At least one skill tag is required. |
+| skill_tag5 | integer |  Fifth Approved skillId requirement of the job posting position.  At least one skill tag is required. |
 | company_name | string |  The employer’s company name on Vietnamworks. |
 | company_size | integer | Number of employees in employer company |
 | company_address | string |  The employer company’s address |
@@ -921,7 +917,7 @@ Possible errors:
 | 403 Forbidden        | The user does not have permission to publish. |
 | 404 Not Found        | The `jobId` is invalid or not yours job. |
 
-#### Fully updates an online job post (V1 / Ongoing Deprecated)
+#### Fully updates an online job post V1 / (Will be Deprecated)
 
 **Scope:** `jobpost` only
 
@@ -1016,7 +1012,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 
-#### Partially updates an online job post (V1 / Ongoing Deprecated
+#### Partially updates an online job post V1 / ( Will be Deprecated )
 
 **Scope:** `jobpost` only
 
@@ -1163,7 +1159,28 @@ The response will be list of **Approved** skillId
  Example response:
 
 ```json
-{"data":[{"id":205,"name":"PHP"},{"id":207,"name":"PHP Frameworks"},{"id":2628,"name":"L\u1eadp Tr\u00ecnh PHP"},{"id":6520,"name":"Fuelphp"},{"id":7103,"name":"PHP Zend Framework"}],"status":{"code":200,"message":""}}
+{
+    "data": [{
+        "id": 205,
+        "name": "PHP"
+    }, {
+        "id": 207,
+        "name": "PHP Frameworks"
+    }, {
+        "id": 2628,
+        "name": "L\u1eadp Tr\u00ecnh PHP"
+    }, {
+        "id": 6520,
+        "name": "Fuelphp"
+    }, {
+        "id": 7103,
+        "name": "PHP Zend Framework"
+    }],
+    "status": {
+        "code": 200,
+        "message": ""
+    }
+}
 ```
 
 Response:
@@ -1172,10 +1189,18 @@ Response:
 | ---------------------|----------------------------------------------------------------------------------------------------------------------|
 | id  | Approved Skill ID                                                                        |
 | name    | Name of approved skill                                                                    |
-| status       | status of request |
-| code        | status code of request|
-| message        | error message |
 
+
+Possible Message:
+
+| Message     | Description                                                                                                          |
+| ---------------------|----------------------------------------------------------------------------------------------------------------------|
+| Not found any skill tags.  | The query not found any approved skill                                              |
+Possible errors:
+
+| Error code           | Description                                                                                                          |
+| ---------------------|----------------------------------------------------------------------------------------------------------------------|
+| 400 Bad Request      | Missing Query Params                                                                       |
 
 ## 4. Testing
 
