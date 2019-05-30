@@ -34,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - [Deprecated](#deprecated)
 - [Contents](#contents)
   - [1. Overview](#1-overview)
-      - [Developer agreement](#developer-agreement)
+      - [Vietnamworks agreement](#vietnamworks-agreement)
   - [2. Authentication](#2-authentication)
     - [2.1. Browser-based authentication](#21-browser-based-authentication)
   - [3. Resources](#3-resources)
@@ -66,7 +66,7 @@ Vietnamworks’s API is a JSON-based OAuth2 API. All requests are made to endpoi
 
 All requests must be sent via secure connection, i.e. `https`, not `http`.
 
-#### Developer agreement
+#### Vietnamworks agreement
 
 By using Vietnamworks’s API, you agree to our [terms of service](http://employer.vietnamworks.com/terms_of_use.php).
 
