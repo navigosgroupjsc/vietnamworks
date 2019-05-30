@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Partially updates an online job post V1 / ( Will be Deprecated )](#partially-updates-an-online-job-post-v1---will-be-deprecated)
 ****
 
-#### Contents
+# Contents
 
 - [Vietnamworks’s API documentation](#vietnamworkss-api-documentation)
 - [Changelog](#changelog)
@@ -32,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - [Added](#added)
     - [Changed](#changed)
     - [Deprecated](#deprecated)
-      - [Contents](#contents)
+- [Contents](#contents)
   - [1. Overview](#1-overview)
       - [Developer agreement](#developer-agreement)
   - [2. Authentication](#2-authentication)
