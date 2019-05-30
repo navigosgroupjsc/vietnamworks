@@ -3,17 +3,22 @@
 This repository contains the documentation for [Vietnamworks](http://www.vietnamworks.com)’s API.
 
 ****
-#### Changelog 
-##### Version 2 (Updated May 30, 2019)
+# Changelog
+All notable changes to this project will be documented in this file.
 
-##### Added
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.0.0] - 2019-05-30
+
+### Added
 - Add API to get list of Approved Skill ID [3.6 Listing Approved Skill Tags](#36-listing-approved-skill-tags)
 
-##### Changed
+#### Changed
 - Post / Edit Job required [3.6 Listing Approved Skill Tags](#36-listing-approved-skill-tags) 
 - Post / Edit Job supported 5 skill tags maximum
 
-##### Deprecated
+#### Deprecated
 - [Creates a job post (V1) / (Will be deprecated)](#creates-a-job-post-v1--will-be-deprecated)
 - [Fully updates an online job post V1 / (Will be Deprecated)](#fully-updates-an-online-job-post-v1--will-be-deprecated)
 - [Partially updates an online job post V1 / ( Will be Deprecated )](#partially-updates-an-online-job-post-v1---will-be-deprecated)
@@ -22,11 +27,11 @@ This repository contains the documentation for [Vietnamworks](http://www.vietnam
 #### Contents
 
 - [Vietnamworks’s API documentation](#vietnamworkss-api-documentation)
-      - [Changelog](#changelog)
-        - [Version 2 (Updated May 30, 2019)](#version-2-updated-may-30-2019)
-        - [Added](#added)
-        - [Changed](#changed)
-        - [Deprecated](#deprecated)
+- [Changelog](#changelog)
+  - [[2.0.0] - 2019-05-30](#200---2019-05-30)
+    - [Added](#added)
+      - [Changed](#changed)
+      - [Deprecated](#deprecated)
       - [Contents](#contents)
   - [1. Overview](#1-overview)
       - [Developer agreement](#developer-agreement)
