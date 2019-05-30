@@ -3,19 +3,30 @@
 This repository contains the documentation for [Vietnamworks](http://www.vietnamworks.com)’s API.
 
 ****
-#### Changelog V2 
+#### Changelog 
+##### Version 2 (Updated May 30, 2019)
 
-1) Change skill tag to using **Approved Skill ID** (Affect Post/Edit Job API)
-2) Extends paramater skill tag from 3 to 5
-3) **V1 will deprecated** (Post/Edit Job API)
-4) Add API to get list of Approved Skill ID [3.6 Skill Tags](#36-skill-tags)
+##### Added
+- Add API to get list of Approved Skill ID [3.6 Listing Approved Skill Tags](#36-listing-approved-skill-tags)
 
+##### Changed
+- Post / Edit Job required [3.6 Listing Approved Skill Tags](#36-listing-approved-skill-tags) 
+- Post / Edit Job supported 5 skill tags maximum
+
+##### Deprecated
+- [Creates a job post (V1) / (Will be deprecated)](#creates-a-job-post-v1--will-be-deprecated)
+- [Fully updates an online job post V1 / (Will be Deprecated)](#fully-updates-an-online-job-post-v1--will-be-deprecated)
+- [Partially updates an online job post V1 / ( Will be Deprecated )](#partially-updates-an-online-job-post-v1---will-be-deprecated)
 ****
 
 #### Contents
 
 - [Vietnamworks’s API documentation](#vietnamworkss-api-documentation)
-      - [Changelog V2](#changelog-v2)
+      - [Changelog](#changelog)
+        - [Version 2 (Updated May 30, 2019)](#version-2-updated-may-30-2019)
+        - [Added](#added)
+        - [Changed](#changed)
+        - [Deprecated](#deprecated)
       - [Contents](#contents)
   - [1. Overview](#1-overview)
       - [Developer agreement](#developer-agreement)
@@ -38,8 +49,9 @@ This repository contains the documentation for [Vietnamworks](http://www.vietnam
     - [3.5. Activates/Deactivates a Job](#35-activatesdeactivates-a-job)
       - [Actives a job](#actives-a-job)
       - [Deactives job posting](#deactives-job-posting)
-    - [3.6 Skill Tags](#36-skill-tags)
+    - [3.6. Listing Approved Skill Tags](#36-listing-approved-skill-tags)
         - [Request](#request)
+      - [Special Cases](#special-cases)
   - [4. Testing](#4-testing)
 
 ## 1. Overview
@@ -1127,7 +1139,7 @@ Possible errors:
 | 403 Forbidden        | The user does not have permission to publish. |
 | 404 Not Found        | The `jobId` is invalid or not yours job. |
 
-### 3.6 Skill Tags
+### 3.6. Listing Approved Skill Tags
 
 ***Get List Approved Skills Tags***
 Approved Skills is required to post/edit job posting
@@ -1149,7 +1161,6 @@ Example request:
 ```
 GET /skill-tags/skill/suggestion?query=php HTTP/1.1
 Host: api.vietnamworks.com
-Authorization: Bearer MTFmMTY2MTI2ZGQ1NGRmZDljZGFiZGQ2YzVjNGIyMGI5NTY0NDQ0MDI3M2EyMjIyNWM5ZmZiM2FmMjRhNDljMA
 Content-Type: application/json
 Accept: application/json
 Accept-Charset: utf-8
@@ -1190,17 +1201,48 @@ Response:
 | id  | Approved Skill ID                                                                        |
 | name    | Name of approved skill                                                                    |
 
+#### Special Cases
 
-Possible Message:
+**Not Found**
 
-| Message     | Description                                                                                                          |
-| ---------------------|----------------------------------------------------------------------------------------------------------------------|
-| Not found any skill tags.  | The query not found any approved skill                                              |
-Possible errors:
+Example request:
 
-| Error code           | Description                                                                                                          |
-| ---------------------|----------------------------------------------------------------------------------------------------------------------|
-| 400 Bad Request      | Missing Query Params                                                                       |
+```
+GET /skill-tags/skill/suggestion?query=php5123 HTTP/1.1
+Host: api.vietnamworks.com
+Content-Type: application/json
+Accept: application/json
+Accept-Charset: utf-8
+```
+
+```json
+{
+    "data": [],
+    "status": {
+        "code": 200,
+        "message": "Not found any skill tags."
+    }
+}
+```
+
+**Missing Query Parameter**
+
+Example request:
+
+```
+GET /skill-tags/skill/suggestion HTTP/1.1
+Host: api.vietnamworks.com
+Content-Type: application/json
+Accept: application/json
+Accept-Charset: utf-8
+```
+
+```json
+{
+    "error": true,
+    "message": "Missing query parameter"
+}
+```
 
 ## 4. Testing
 
