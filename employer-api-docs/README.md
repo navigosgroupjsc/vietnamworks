@@ -17,8 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Post / Edit Job required [3.6 Listing Approved Skill Tags](#36-listing-approved-skill-tags) 
 - Post / Edit Job supported 5 skill tags maximum
+- Job From Structure supported 5 skill tags maximum
 
 ### Deprecated
+- [Gets the job form’s details (V1 / Will be deprecated)](#gets-the-job-forms-details-v1--will-be-deprecated)
 - [Creates a job post (V1) / (Will be deprecated)](#creates-a-job-post-v1--will-be-deprecated)
 - [Fully updates an online job post V1 / (Will be Deprecated)](#fully-updates-an-online-job-post-v1--will-be-deprecated)
 - [Partially updates an online job post V1 / ( Will be Deprecated )](#partially-updates-an-online-job-post-v1---will-be-deprecated)
@@ -34,12 +36,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - [Deprecated](#deprecated)
 - [Contents](#contents)
   - [1. Overview](#1-overview)
-      - [Developer agreement](#developer-agreement)
+      - [Vietnamworks agreement](#vietnamworks-agreement)
   - [2. Authentication](#2-authentication)
     - [2.1. Browser-based authentication](#21-browser-based-authentication)
   - [3. Resources](#3-resources)
     - [3.1. Job Form Structure](#31-job-form-structure)
-      - [Gets the job form’s details](#gets-the-job-forms-details)
+      - [Gets the job form’s details (V2)](#gets-the-job-forms-details-v2)
+      - [Gets the job form’s details (V1 / Will be deprecated)](#gets-the-job-forms-details-v1--will-be-deprecated)
     - [3.2. Job Listing and Job Details](#32-job-listing-and-job-details)
       - [Lists the employer’s online job posts](#lists-the-employers-online-job-posts)
       - [Jobs posting details](#jobs-posting-details)
@@ -66,7 +69,7 @@ Vietnamworks’s API is a JSON-based OAuth2 API. All requests are made to endpoi
 
 All requests must be sent via secure connection, i.e. `https`, not `http`.
 
-#### Developer agreement
+#### Vietnamworks agreement
 
 By using Vietnamworks’s API, you agree to our [terms of service](http://employer.vietnamworks.com/terms_of_use.php).
 
@@ -242,7 +245,111 @@ The API is RESTful and arranged around resources. All requests must be made with
 
 ### 3.1. Job Form Structure
 
-#### Gets the job form’s details
+#### Gets the job form’s details (V2)
+
+**Scope:** `jobpost` only
+
+Returns details of the job posting form that employer has granted permission to publish job posting service to VietnamWorks website.
+
+```
+GET https://api.vietnamworks.com/api/rest/v1/jobs/new.json
+```
+
+Example request:
+
+```
+GET api/rest/v2/jobs/new.json HTTP/1.1
+Host: api.vietnamworks.com
+Authorization: Bearer MTFmMTY2MTI2ZGQ1NGRmZDljZGFiZGQ2YzVjNGIyMGI5NTY0NDQ0MDI3M2EyMjIyNWM5ZmZiM2FmMjRhNDljMA
+Content-Type: application/json
+Accept: application/json
+Accept-Charset: utf-8
+```
+
+The response is a Job Form object within a Job Posting Purchase Order data. You will use this data later for posting and editing job.
+
+Example response:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "code": 200,
+  "form_view": {
+     "job": {
+		"job_title": {
+           "name": "job_title",
+           "required": true,
+           "type": "text",
+           "expanded": false,
+           "multiple": false,
+           "readonly": false,
+           "max_length": 100
+        },
+        "job_level": {
+           "name": "job_level",
+           "required": true,
+           "type": "choice",
+           "expanded": false,
+           "multiple": false,
+           "values": [
+          	  {
+              "label": "New Grad/Entry Level/Internship",
+              "value": "1",
+              "data": 1
+              },
+            ...
+          ],
+          "readonly": false
+        },
+        ...
+    }
+  }
+}
+```
+
+Where a Job Form object is:
+
+| Field      | Type   | Required   | Max Length |Description                               |
+| -----------|--------|--------|--------|----------------------------------------------|
+| job_title  | text | true | 100 | The title of the job posting.|
+| job_level  | choice | true |  | The level of the job posting.                  |
+| job_categories| choice | true |  | Industries of the job posting. Choose maximum 3 industries|
+| job_category_orders  | text | true  |  | The list of industries separated by commas in order of display|
+| job_locations| choice | true |  | Locations of the job posting. Choose maximum 3 cities|
+| minimum_salary| text | true |  | Salary range from|
+| maximum_salary| text | true |  | Salary range to|
+| is_show_salary| radio  | true |  | Determines whether the salary should be shown on  VietnamWorks website or not|
+| job_description | textarea  | true| 14500 | The  description of the job posting.|
+| job_requirements| textarea | true| 14500 | The job posting requirements. |
+| skill_tag1 | integer  | true | 100 | First skillId requirement of the job posting position. At least one approved skill tag is required. |
+| skill_tag2 | integer  | false | 100 | Second skillId requirement of the job posting position. At least one approved skill tag is required. |
+| skill_tag3 | integer  | false | 100 | Third skillId requirement of the job posting position. At least one approved skill tag is required. |
+| skill_tag4 | integer  | false | 100 | Fourth skillId requirement of the job posting position. At least one approved skill tag is required. |
+| skill_tag5 | integer  | false | 100 | Fifth skillId requirement of the job posting position. At least one approved skill tag is required. |
+| company_name| text | true| 255 | The employer’s company name on Vietnamworks. |
+| company_size | choice | true|  | Number of employees in employer company   |
+| company_address | text | true|  | The employer company’s address. |
+| company_profile | textarea | true| 10000 | Employer company information|
+| company_benefit1 | benefit  | true |  | benefit_id choice, benefit_description text to show what benefit the comapany provides|
+| company_benefit2 | benefit  | false |  | benefit_id choice, benefit_description text to show what benefit the comapany provides|
+| company_benefit3 | benefit  | false |  | benefit_id choice, benefit_description text to show what benefit the comapany provides|
+| contact_name | text | true| 30 | The HR person who handles this job posting|
+| is_show_contact | checkbox | false |  | Whether the `contact_name` is shown on job-seeker site or not.|
+| email_for_application | text | true| 255 | The email to receive job applications|
+| preferred_language  | choice | true|  | The resume's language that employer prefers when job-seeker applies|
+| redirect_to  | text  | false| 255 | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
+| job_posting_service  | choice  | true|  | The job posting service that employer purchased on Vietnamworks|
+
+Possible errors:
+
+| Error code           | Description                                     |
+| ---------------------|-------------------------------------------------|
+| 400 Bad request      | There is no available job posting service.      |
+| 401 Unauthorized     | The `accessToken` is invalid or has been revoked. |
+
+#### Gets the job form’s details (V1 / Will be deprecated) 
 
 **Scope:** `jobpost` only
 
@@ -320,9 +427,11 @@ Where a Job Form object is:
 | is_show_salary| radio  | true |  | Determines whether the salary should be shown on  VietnamWorks website or not|
 | job_description | textarea  | true| 14500 | The  description of the job posting.|
 | job_requirements| textarea | true| 14500 | The job posting requirements. |
-| skill_tag1 | text  | false | 100 | First skill requirement for the job posting position. |
+| skill_tag1 | text  | true | 100 | First skill requirement for the job posting position. |
 | skill_tag2 | text  | false | 100 | Second skill requirement for the job posting position. |
 | skill_tag3 | text  | false | 100 | Third skill requirement for the job posting position. |
+| skill_tag4 | text  | false | 100 | Fourth skill requirement for the job posting position. |
+| skill_tag5 | text  | false | 100 | Fifth skill requirement for the job posting position. |
 | company_name| text | true| 255 | The employer’s company name on Vietnamworks. |
 | company_size | choice | true|  | Number of employees in employer company   |
 | company_address | text | true|  | The employer company’s address. |
