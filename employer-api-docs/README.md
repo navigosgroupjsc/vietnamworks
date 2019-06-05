@@ -252,7 +252,7 @@ The API is RESTful and arranged around resources. All requests must be made with
 Returns details of the job posting form that employer has granted permission to publish job posting service to VietnamWorks website.
 
 ```
-GET https://api.vietnamworks.com/api/rest/v1/jobs/new.json
+GET https://api.vietnamworks.com/api/rest/v2/jobs/new.json
 ```
 
 Example request:
