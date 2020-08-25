@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [2.0.2] - 2020-08-25
+
+### Changed
+- New list Job Level include: Entry Level, Experienced (non-manager), Manager, Director and above
 
 ## [2.0.1] - 2020-06-16
 
@@ -38,9 +42,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Vietnamworks’s API documentation](#vietnamworkss-api-documentation)
 - [Changelog](#changelog)
-  - [[2.0.0] - 2019-05-30](#200---2019-05-30)
-    - [Added](#added)
+  - [[2.0.2] - 2020-08-25](#202---2020-08-25)
     - [Changed](#changed)
+  - [[2.0.1] - 2020-06-16](#201---2020-06-16)
+    - [Added](#added)
+    - [Changed](#changed-1)
+  - [[2.0.0] - 2019-05-30](#200---2019-05-30)
+    - [Added](#added-1)
+    - [Changed](#changed-2)
     - [Deprecated](#deprecated)
 - [Contents](#contents)
   - [1. Overview](#1-overview)
@@ -61,18 +70,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
       - [Fully updates an online job post (V2)](#fully-updates-an-online-job-post-v2)
       - [Partially updates an online job post (V2)](#partially-updates-an-online-job-post-v2)
       - [Fully updates an online job post V1 / (Will be Deprecated)](#fully-updates-an-online-job-post-v1--will-be-deprecated)
-      - [Partially updates an online job post V1 / ( Will be Deprecated )](#partially-updates-an-online-job-post-v1---will-be-deprecated)
+      - [Partially updates an online job post V1 / ( Will be Deprecated )](#partially-updates-an-online-job-post-v1---will-be-deprecated-)
     - [3.5. Activates/Deactivates a Job](#35-activatesdeactivates-a-job)
       - [Actives a job](#actives-a-job)
       - [Deactives job posting](#deactives-job-posting)
     - [3.6. Listing Approved Skill Tags](#36-listing-approved-skill-tags)
         - [Request](#request)
-        - [Special Cases](#special-cases)
+      - [Special Cases](#special-cases)
     - [3.7. Company Location](#37-company-location)
-         - [3.7.1 List of Company Location](#list-of-company-location)
-         - [3.7.2 Create a company location](#create-a-company-location)
-         - [3.7.3 Edit a company location](#edit-a-company-location)
-         - [3.7.4 Delete a company location](#-delete-a-company-location)
+      - [3.7.1. List of company locations](#371-list-of-company-locations)
+      - [Special Cases](#special-cases-1)
+      - [3.7.2. Create a company location](#372-create-a-company-location)
+      - [Special Cases](#special-cases-2)
+      - [3.7.3. Update a company location](#373-update-a-company-location)
+      - [Special Cases](#special-cases-3)
+      - [3.7.4. Delete a company location](#374-delete-a-company-location)
+      - [Special Cases](#special-cases-4)
   - [4. Testing](#4-testing)
 
 ## 1. Overview
