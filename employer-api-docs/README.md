@@ -324,7 +324,7 @@ Content-Type: application/json; charset=utf-8
 
 Where a Job Form object is:
 
-| Field      | Type   | Required   | Max Length |Description                               |
+| Field      | Type   | Required   | Max Length |   Description                           |
 | -----------|--------|--------|--------|----------------------------------------------|
 | job_title  | text | true | 100 | The title of the job posting.|
 | job_level  | choice | true |  | The level of the job posting.                  |
@@ -354,10 +354,11 @@ Where a Job Form object is:
 | preferred_language  | choice | true|  | The resume's language that employer prefers when job-seeker applies|
 | redirect_to  | text  | false| 255 | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
 | job_posting_service  | choice  | true|  | The job posting service that employer purchased on Vietnamworks|
-| job_working_location1 | working_location  | true |  | location_id choice|
-| job_working_location2 | working_location  | false |  | location_id choice|
-| job_working_location3 | working_location  | false |  | location_id choice|
 | type_working_id  | choice | true |  | The type workings of the job posting|
+| job_working_location1 | integer | required | |The first companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location2 | integer | optional | |The second companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location3 | integer | optional | |The third companyLocationId of the job working location. At lease one job working location is required. |
+
 Possible errors:
 
 | Error code           | Description                                     |
@@ -461,10 +462,10 @@ Where a Job Form object is:
 | preferred_language  | choice | true|  | The resume's language that employer prefers when job-seeker applies|
 | redirect_to  | text  | false| 255 | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
 | job_posting_service  | choice  | true|  | The job posting service that employer purchased on Vietnamworks|
-| job_working_location1 | working_location  | true |  | location_id choice|
-| job_working_location2 | working_location  | false |  | location_id choice|
-| job_working_location3 | working_location  | false |  | location_id choice|
-| type_working_id  | choice | true |  | The type workings of the job posting|
+| type_working_id  | choice | true | 100 | The type workings of the job posting|
+| job_working_location1 | text  | true |  | location_id choice|
+| job_working_location2 | text  | false |  | location_id choice|
+| job_working_location3 | text  | false |  | location_id choice|
 
 Possible errors:
 
@@ -563,6 +564,7 @@ Where a Job Posting object is:
 | company_benefits | array | Array of benefits of the company |
 | skill_tags | array | Array of skill tags of the job posting |
 | redirect_to  | string  | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
+| skill_tags | array | Array of skill tags of the job posting |
 
 Possible errors:
 
@@ -623,7 +625,9 @@ Content-Type: application/json; charset=utf-8
       "unformatted_company_name": "Vietnamworks",
       "id": 561451,
       "type_working_id": 1,
-      "job_locations": ["7","17"]
+      "job_locations": [
+          "11 Đoàn Kết, Binh Tho, Thủ Đức, Ho Chi Minh City, Vietnam"
+      ]
   }
 }
 ```
@@ -733,9 +737,9 @@ Accept-Charset: utf-8
         "redirect_to": "http://careers.rmit.edu.vn/vn/en/listing",
         "job_posting_service": 123,
         "type_working_id": 1,
-        "job_working_location1": {
-            "location_id": "309"
-        }
+        "job_working_location1": 446,
+        "job_working_location2": 379,
+        "job_working_location3": 459
     }
 }
 ```
@@ -773,9 +777,9 @@ With the following fields:
 | redirect_to  | string | optional | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
 | job_posting_service | integer | required | The job posting service id that employer purchased on VietnamWorks |
 | type_working_id | integer | required | The type working id that type workings on VietnamWorks |
-| job_working_location1 | working_location | required | The first `working_location` object (location_id). At lease one job working location is required. |
-| job_working_location2 | working_location | optional | The second `working_location` object (location_id). At lease one job working location is required. |
-| job_working_location3 | working_location | optional | The third `working_location` object (location_id). At lease one job working location is required. |
+| job_working_location1 | integer | required | The first companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location2 | integer | optional | The second companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location3 | integer | optional | The third companyLocationId of the job working location. At lease one job working location is required. |
 
 The response is a location header that points to the URL of the newly created job. Example response:
 
@@ -849,9 +853,9 @@ Accept-Charset: utf-8
         "redirect_to": "http://careers.rmit.edu.vn/vn/en/listing",
         "job_posting_service": 123,
         "type_working_id": 1,
-        "job_working_location1": {
-            "location_id": "309"
-        }
+        "job_working_location1": 446,
+        "job_working_location2": 379,
+        "job_working_location3": 459
     }
 }
 ```
@@ -887,9 +891,9 @@ With the following fields:
 | redirect_to  | string | optional | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
 | job_posting_service | integer | required | The job posting service id that employer purchased on VietnamWorks |
 | type_working_id | integer | required | The type working id that type workings on VietnamWorks |
-| job_working_location1 | working_location | required | The first `working_location` object (location_id). At lease one job working location is required. |
-| job_working_location2 | working_location | optional | The second `working_location` object (location_id). At lease one job working location is required. |
-| job_working_location3 | working_location | optional | The third `working_location` object (location_id). At lease one job working location is required. |
+| job_working_location1 | integer | required | The first companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location2 | integer | optional | The second companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location3 | integer | optional | The third companyLocationId of the job working location. At lease one job working location is required. |
 
 The response is a location header that points to the URL of the newly created job. Example response:
 
@@ -908,113 +912,112 @@ Possible errors:
 | 403 Forbidden        | The user does not have permission to publish. |
 | 404 Not Found        | The `jobId` is invalid or not yours job. |
 
-    ### 3.4. Edits a Job
+### 3.4. Edits a Job
     
-    #### Fully updates an online job post (V2)
-    
-    **Scope:** `jobpost` only
-    
-    Fully updates an online job posting information on behalf of the authenticated user.
-    
-    ```
-    PUT https://api.vietnamworks.com/api/rest/v2/jobs/{jobId}.json 
-    ```
-    
-    Example request:
-    
-    ```
-    PUT /api/rest/v2/jobs/{jobId}.json HTTP/1.1
-    Host: api.vietnamworks.com
-    Authorization: Bearer MTFmMTY2MTI2ZGQ1NGRmZDljZGFiZGQ2YzVjNGIyMGI5NTY0NDQ0MDI3M2EyMjIyNWM5ZmZiM2FmMjRhNDljMA
-    Content-Type: application/json
-    Accept: application/json
-    Accept-Charset: utf-8
-    {
-        "job": {
-            "job_title": "Fresher Software Test Engineer",
-            "job_level": 5,
-            "job_categories": [
-                35,
-                70
-            ],
-            "job_category_orders": "35,70",
-            "job_locations": [
-                29,
-                24
-            ],
-            "minimum_salary": 700,
-            "maximum_salary": 1000,
-            "is_show_salary": 1,
-            "job_description": "Analyze system and software requirements",
-            "job_requirements": "Bachelor degree or above in Electrical Engineering or equivalent",
-            "skill_tag1": 205,
-            "skill_tag2": 207,
-            "skill_tag3": 2628,
-            "skill_tag4": 6520,
-            "skill_tag5": 7103,
-            "company_name": "VietnamWorks",
-            "company_size": 4,
-            "company_address": "10th Floor, Golden Tower, 6 Nguyen Thi Minh Khai, District 1, HCM City.",
-            "company_profile": "VietnamWorks is Vietnam's #1 online service for professionals looking for jobs and employers looking for talent.",
-            "company_benefit1": {
-                "benefit_id": 1,
-                "benefit_desc": "12 days annual leave"
-            },
-            "contact_name": "HR Department",
-            "is_show_contact": 1,
-            "email_for_application": "lan.bui@navigosgroup.com",
-            "preferred_language": 2,
-            "type_working_id": 1,
-            "job_working_location1": {
-                "location_id": "309"
-            }
-        }
-    }
-    ```
-    
-    With the following fields:
-    
-    | Parameter       | Type         | Required?  | Description                                     |
-    | -------------   |--------------|------------|-------------------------------------------------|
-    | job_title           | string       | required   | The title of the job posting.|
-    | job_level   | integer       | required   | The job level of the job posting |
-    | job_categories | integer array | required   | The industries of the job posting. At least one industry is required and maximum of 3.  |
-    | job_category_orders  | integer array | required  | The order of `job_categories` list |
-    | job_locations | integer array | required   | Working cities of the job. At least one city is required and maximum of 3.  |
-    | minimum_salary | integer | required | Salary range from in USD, which is greater than 1 and less than or equal to than `maximum_salary` |
-    | maximum_salary | integer | required | Salary range to in USD, which is greater than 1 and greater than or equal to `maximum_salary` |
-    | is_show_salary | integer | required | Determines whether the salary should be shown on  VietnamWorks website or not. The accepted value is [0,1] |
-    | job_description | string | required | The description of the job posting. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
-    | job_requirements | string | required | The job posting requirements. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
-    | skill_tag1 | integer | required | First Approved skillId requirement of the job posting position. At least one skill tag is required. |
-    | skill_tag2 | integer | optional | Second Approved skillId requirement of the job posting position. At least one skill tag is required |
-    | skill_tag3 | integer | optional | Third Approved skillId requirement of the job posting position.  At least one skill tag is required. |
-    | skill_tag4 | integer | optional | Fourth Approved skillId requirement of the job posting position.  At least one skill tag is required. |
-    | skill_tag5 | integer | optional | Fifth Approved skillId requirement of the job posting position.  At least one skill tag is required. |
-    | company_name | string | required | The employer’s company name on Vietnamworks. |
-    | company_size | integer | optional | Number of employees in employer company |
-    | company_address | string | optional | The employer company’s address |
-    | company_profile | string | required | The employer company information. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
-    | company_benefit1 | benefit | required | The first `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
-    | company_benefit2 | benefit | optional | The second `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
-    | company_benefit3 | benefit | optional | The third `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
-    | contact_name | string | required | The HR person who handles the job posting.|
-    | is_show_contact | checkbox | required | Whether the `contact_name` is shown on job-seeker site or not.  |
-    | email_for_application | string | required | The email to receive job applications. |
-    | preferred_language | integer | required | The resume's language that employer prefers when job-seeker applies |
-    | redirect_to  | string | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
-    | type_working_id | integer | required | The type working id that type workings on VietnamWorks |
-    | job_working_location1 | working_location | required | The first `working_location` object (location_id). At lease one job working location is required. |
-    | job_working_location2 | working_location | optional | The second `working_location` object (location_id). At lease one job working location is required. |
-    | job_working_location3 | working_location | optional | The third `working_location` object (location_id). At lease one job working location is required. |
-    
-    The response won't be returning a body. Example response:
-    
-    ```
-    HTTP/1.1 204 No Content
-    Content-Type: application/json; charset=utf-8
-    ```
+#### Fully updates an online job post (V2)
 
+**Scope:** `jobpost` only
+
+Fully updates an online job posting information on behalf of the authenticated user.
+
+```
+PUT https://api.vietnamworks.com/api/rest/v2/jobs/{jobId}.json 
+```
+
+Example request:
+
+```
+PUT /api/rest/v2/jobs/{jobId}.json HTTP/1.1
+Host: api.vietnamworks.com
+Authorization: Bearer MTFmMTY2MTI2ZGQ1NGRmZDljZGFiZGQ2YzVjNGIyMGI5NTY0NDQ0MDI3M2EyMjIyNWM5ZmZiM2FmMjRhNDljMA
+Content-Type: application/json
+Accept: application/json
+Accept-Charset: utf-8
+{
+    "job": {
+        "job_title": "Fresher Software Test Engineer",
+        "job_level": 5,
+        "job_categories": [
+            35,
+            70
+        ],
+        "job_category_orders": "35,70",
+        "job_locations": [
+            29,
+            24
+        ],
+        "minimum_salary": 700,
+        "maximum_salary": 1000,
+        "is_show_salary": 1,
+        "job_description": "Analyze system and software requirements",
+        "job_requirements": "Bachelor degree or above in Electrical Engineering or equivalent",
+        "skill_tag1": 205,
+        "skill_tag2": 207,
+        "skill_tag3": 2628,
+        "skill_tag4": 6520,
+        "skill_tag5": 7103,
+        "company_name": "VietnamWorks",
+        "company_size": 4,
+        "company_address": "10th Floor, Golden Tower, 6 Nguyen Thi Minh Khai, District 1, HCM City.",
+        "company_profile": "VietnamWorks is Vietnam's #1 online service for professionals looking for jobs and employers looking for talent.",
+        "company_benefit1": {
+            "benefit_id": 1,
+            "benefit_desc": "12 days annual leave"
+        },
+        "contact_name": "HR Department",
+        "is_show_contact": 1,
+        "email_for_application": "lan.bui@navigosgroup.com",
+        "preferred_language": 2,
+        "type_working_id": 1,
+        "job_working_location1": 446,
+        "job_working_location2": 379,
+        "job_working_location3": 459,
+    }
+}
+```
+
+With the following fields:
+
+| Parameter       | Type         | Required?  | Description                                     |
+| -------------   |--------------|------------|-------------------------------------------------|
+| job_title       | string       | required   | The title of the job posting.|
+| job_level   | integer       | required   | The job level of the job posting |
+| job_categories | integer array | required   | The industries of the job posting. At least one industry is required and maximum of 3.  |
+| job_category_orders  | integer array | required  | The order of `job_categories` list |
+| job_locations | integer array | required   | Working cities of the job. At least one city is required and maximum of 3.  |
+| minimum_salary | integer | required | Salary range from in USD, which is greater than 1 and less than or equal to than `maximum_salary` |
+| maximum_salary | integer | required | Salary range to in USD, which is greater than 1 and greater than or equal to `maximum_salary` |
+| is_show_salary | integer | required | Determines whether the salary should be shown on  VietnamWorks website or not. The accepted value is [0,1] |
+| job_description | string | required | The description of the job posting. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
+| job_requirements | string | required | The job posting requirements. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
+| skill_tag1 | integer | required | First Approved skillId requirement of the job posting position. At least one skill tag is required. |
+| skill_tag2 | integer | optional | Second Approved skillId requirement of the job posting position. At least one skill tag is required |
+| skill_tag3 | integer | optional | Third Approved skillId requirement of the job posting position.  At least one skill tag is required. |
+| skill_tag4 | integer | optional | Fourth Approved skillId requirement of the job posting position.  At least one skill tag is required. |
+| skill_tag5 | integer | optional | Fifth Approved skillId requirement of the job posting position.  At least one skill tag is required. |
+| company_name | string | required | The employer’s company name on Vietnamworks. |
+| company_size | integer | optional | Number of employees in employer company |
+| company_address | string | optional | The employer company’s address |
+| company_profile | string | required | The employer company information. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
+| company_benefit1 | benefit | required | The first `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
+| company_benefit2 | benefit | optional | The second `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
+| company_benefit3 | benefit | optional | The third `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
+| contact_name | string | required | The HR person who handles the job posting.|
+| is_show_contact | checkbox | required | Whether the `contact_name` is shown on job-seeker site or not.  |
+| email_for_application | string | required | The email to receive job applications. |
+| preferred_language | integer | required | The resume's language that employer prefers when job-seeker applies |
+| redirect_to  | string | optional | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
+| type_working_id | integer | required | The type working idz  that type workings on VietnamWorks |
+| job_working_location1 | integer | required | The first companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location2 | integer | optional | The second companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location3 | integer | optional | The third companyLocationId of the job working location. At lease one job working location is required. |
+
+The response won't be returning a body. Example response:
+
+```
+HTTP/1.1 204 No Content
+Content-Type: application/json; charset=utf-8
+```
 
 #### Partially updates an online job post (V2)
 
@@ -1041,7 +1044,6 @@ Accept-Charset: utf-8
     }
 }
 ```
-
 With the following fields:
 
 | Parameter       | Type         |  Description                                     |
