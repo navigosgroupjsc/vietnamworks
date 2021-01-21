@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.0.3] - 2021-01-21
+
+### Added
+- Add API to post draft job [Creates a draft job post](#creates-a-draft-job-post)
+
 ## [2.0.2] - 2020-08-25
 
 ### Changed
@@ -64,6 +70,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
       - [Lists the employer’s online job posts](#lists-the-employers-online-job-posts)
       - [Jobs posting details](#jobs-posting-details)
     - [3.3. Posts a Job](#33-posts-a-job)
+      - [Creates a draft job post](#creates-a-draft-job-post)
       - [Creates a job post (V2)](#creates-a-job-post-v2)
       - [Creates a job post (V1) / (Will be deprecated)](#creates-a-job-post-v1--will-be-deprecated)
     - [3.4. Edits a Job](#34-edits-a-job)
@@ -692,6 +699,118 @@ Possible errors:
 | 404 Not Found        | The `jobId` is invalid or not yours job. |
 
 ### 3.3. Posts a Job
+
+#### Creates a draft job post
+
+Creates a draft job posting (used by internal CRM Team only)
+
+```
+POST https://api.vietnamworks.com/api/rest/v2/{employerId}/draft-jobs.json 
+```
+
+Example request:
+
+```
+POST /api/rest/v2/5564007/draft-jobs.json HTTP/1.1
+Host: api.vietnamworks.com
+Authorization: Bearer MTFmMTY2MTI2ZGQ1NGRmZDljZGFiZGQ2YzVjNGIyMGI5NTY0NDQ0MDI3M2EyMjIyNWM5ZmZiM2FmMjRhNDljMA
+Content-Type: application/json
+Accept: application/json
+Accept-Charset: utf-8
+{
+    "job": {
+        "job_title": "Fresher Software Test Engineer",
+        "job_level": 5,
+        "job_categories": [
+            35,
+            70
+        ],
+        "job_category_orders": "35,70",
+        "job_locations": [
+            29,
+            24
+        ],
+        "minimum_salary": 700,
+        "maximum_salary": 1000,
+        "is_show_salary": 1,
+        "job_description": "Analyze system and software requirements",
+        "job_requirements": "Bachelor degree or above in Electrical Engineering or equivalent",
+        "skill_tag1": 205,
+        "skill_tag2": 207,
+        "skill_tag3": 2628,
+        "skill_tag4": 6520,
+        "skill_tag5": 7103,
+        "company_name": "VietnamWorks",
+        "company_size": 4,
+        "company_address": "10th Floor, Golden Tower, 6 Nguyen Thi Minh Khai, District 1, HCM City.",
+        "company_profile": "VietnamWorks is Vietnam's #1 online service for professionals looking for jobs and employers looking for talent.",
+        "company_benefit1": {
+            "benefit_id": 1,
+            "benefit_desc": "12 days annual leave"
+        },
+        "contact_name": "HR Department",
+        "is_show_contact": 1,
+        "email_for_application": "lan.bui@navigosgroup.com",
+        "preferred_language": 2,
+        "redirect_to": "http://careers.rmit.edu.vn/vn/en/listing",
+        "type_working_id": 1,
+        "job_working_location1": 446,
+        "job_working_location2": 379,
+        "job_working_location3": 459
+    }
+}
+```
+
+With the following fields:
+
+| Parameter       | Type         | Required?  | Description                                     |
+| -------------   |--------------|------------|-------------------------------------------------|
+| job_title           | string       | required   | The title of the job posting.|
+| job_level   | integer       | required   | The job level of the job posting |
+| job_categories | integer array | required   | The industries of the job posting. At least one industry is required and maximum of 3.  |
+| job_category_orders  | integer array | required  | The order of `job_categories` list |
+| job_locations | integer array | required   | Working cities of the job. At least one city is required and maximum of 3.  |
+| minimum_salary | integer | required | Salary range from in USD, which is greater than 1 and less than or equal to than `maximum_salary` |
+| maximum_salary | integer | required | Salary range to in USD, which is greater than 1 and greater than or equal to `maximum_salary` |
+| is_show_salary | integer | required | Determines whether the salary should be shown on  VietnamWorks website or not. The accepted value is [0,1] |
+| job_description | string | required | The description of the job posting. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
+| job_requirements | string | required | The job posting requirements. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
+| skill_tag1 | integer | required | First skillId requirement of the job posting position. At least one approved skill tag is required. |
+| skill_tag2 | integer | optional | Second skillId requirement of the job posting position.  At least one approved  skill tag is required. |
+| skill_tag3 | integer | optional | Third skillId requirement of the job posting position.  At least one approved  skill tag is required. |
+| skill_tag4 | integer | optional | Fourth skillId requirement of the job posting position.  At least one approved  skill tag is required. |
+| skill_tag5 | integer | optional | Fifth skillId requirement of the job posting position.  At least one approved  skill tag is required. |
+| company_name | string | required | The employer’s company name on Vietnamworks. |
+| company_size | integer | optional | Number of employees in employer company |
+| company_address | string | optional | The employer company’s address |
+| company_profile | string | required | The employer company information. Plain text only (HTML tags will be shown as normal < and >). To insert a newline please use \n|
+| company_benefit1 | benefit | required | The first `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
+| company_benefit2 | benefit | optional | The second `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
+| company_benefit3 | benefit | optional | The third `benefit` object (benefit_id and benefit_description). At lease one benefit is required. |
+| contact_name | string | required | The HR person who handles the job posting.|
+| is_show_contact | checkbox | required | Whether the `contact_name` is shown on job-seeker site or not.  |
+| email_for_application | string | required | The email to receive job applications. |
+| preferred_language | integer | required | The resume's language that employer prefers when job-seeker applies |
+| redirect_to  | string | optional | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
+| type_working_id | integer | required | The type working id that type workings on VietnamWorks |
+| job_working_location1 | integer | required | The first companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location2 | integer | optional | The second companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location3 | integer | optional | The third companyLocationId of the job working location. At lease one job working location is required. |
+
+The response is a location header that points to the URL of the newly created job. Example response:
+
+```
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8
+Location: /api/rest/v1/jobs/578189
+```
+
+Possible errors:
+
+| Error code           | Description                                                                                                          |
+| ---------------------|----------------------------------------------------------------------------------------------------------------------|
+| 400 Bad Request      | Required fields were invalid, or not specified. Or there is no available job posting service.
+| 404 Not Found        | The `jobId` is invalid or not yours job. |
 
 #### Creates a job post (V2)
 
