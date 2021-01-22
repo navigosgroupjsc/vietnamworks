@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.3] - 2021-01-21
 
 ### Added
+- Add API to get draft job form structure [Gets the draft job form’s details](#gets-the-draft-job-forms-details)
 - Add API to post draft job [Creates a draft job post](#creates-a-draft-job-post)
 
 ## [2.0.2] - 2020-08-25
@@ -64,6 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - [2.1. Browser-based authentication](#21-browser-based-authentication)
   - [3. Resources](#3-resources)
     - [3.1. Job Form Structure](#31-job-form-structure)
+      - [Gets the draft job form’s details](#gets-the-draft-job-forms-details)
       - [Gets the job form’s details (V2)](#gets-the-job-forms-details-v2)
       - [Gets the job form’s details (V1 / Will be deprecated)](#gets-the-job-forms-details-v1--will-be-deprecated)
     - [3.2. Job Listing and Job Details](#32-job-listing-and-job-details)
@@ -277,6 +279,104 @@ The response structure of this renew-token-request would be similar to the reque
 The API is RESTful and arranged around resources. All requests must be made with an integration token. All requests must be made using `https`.
 
 ### 3.1. Job Form Structure
+
+#### Gets the draft job form’s details
+
+Returns details of the job posting form that employer
+
+```
+GET https://api.vietnamworks.com/api/rest/v2/{employerId}/draft-jobs/new.json
+```
+
+Example request:
+
+```
+GET api/rest/v2/5564007/draft-jobs/new.json HTTP/1.1
+Host: api.vietnamworks.com
+Authorization: Bearer MTFmMTY2MTI2ZGQ1NGRmZDljZGFiZGQ2YzVjNGIyMGI5NTY0NDQ0MDI3M2EyMjIyNWM5ZmZiM2FmMjRhNDljMA
+Content-Type: application/json
+Accept: application/json
+Accept-Charset: utf-8
+```
+
+The response is a Job Form object within a Job Posting Purchase Order data. You will use this data later for posting and editing job.
+
+Example response:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "code": 200,
+  "form_view": {
+     "job": {
+    "job_title": {
+           "name": "job_title",
+           "required": true,
+           "type": "text",
+           "expanded": false,
+           "multiple": false,
+           "readonly": false,
+           "max_length": 100
+        },
+        "job_level": {
+           "name": "job_level",
+           "required": true,
+           "type": "choice",
+           "expanded": false,
+           "multiple": false,
+           "values": [
+              {
+              "label": "New Grad/Entry Level/Internship",
+              "value": "1",
+              "data": 1
+              },
+            ...
+          ],
+          "readonly": false
+        },
+        ...
+    }
+  }
+}
+```
+
+Where a Job Form object is:
+
+| Field      | Type   | Required   | Max Length |   Description                           |
+| -----------|--------|--------|--------|----------------------------------------------|
+| job_title  | text | true | 100 | The title of the job posting.|
+| job_level  | choice | true |  | The level of the job posting.                  |
+| job_categories| choice | true |  | Industries of the job posting. Choose maximum 3 industries|
+| job_category_orders  | text | true  |  | The list of industries separated by commas in order of display|
+| job_locations| choice | true |  | Locations of the job posting. Choose maximum 3 cities|
+| minimum_salary| text | true |  | Salary range from|
+| maximum_salary| text | true |  | Salary range to|
+| is_show_salary| radio  | true |  | Determines whether the salary should be shown on  VietnamWorks website or not|
+| job_description | textarea  | true| 14500 | The  description of the job posting.|
+| job_requirements| textarea | true| 14500 | The job posting requirements. |
+| skill_tag1 | integer  | true | 100 | First skillId requirement of the job posting position. At least one approved skill tag is required. |
+| skill_tag2 | integer  | false | 100 | Second skillId requirement of the job posting position. At least one approved skill tag is required. |
+| skill_tag3 | integer  | false | 100 | Third skillId requirement of the job posting position. At least one approved skill tag is required. |
+| skill_tag4 | integer  | false | 100 | Fourth skillId requirement of the job posting position. At least one approved skill tag is required. |
+| skill_tag5 | integer  | false | 100 | Fifth skillId requirement of the job posting position. At least one approved skill tag is required. |
+| company_name| text | true| 255 | The employer’s company name on Vietnamworks. |
+| company_size | choice | true|  | Number of employees in employer company   |
+| company_address | text | true|  | The employer company’s address. |
+| company_profile | textarea | true| 10000 | Employer company information|
+| company_benefit1 | benefit  | true |  | benefit_id choice, benefit_description text to show what benefit the comapany provides|
+| company_benefit2 | benefit  | false |  | benefit_id choice, benefit_description text to show what benefit the comapany provides|
+| company_benefit3 | benefit  | false |  | benefit_id choice, benefit_description text to show what benefit the comapany provides|
+| contact_name | text | true| 30 | The HR person who handles this job posting|
+| is_show_contact | checkbox | false |  | Whether the `contact_name` is shown on job-seeker site or not.|
+| email_for_application | text | true| 255 | The email to receive job applications|
+| preferred_language  | choice | true|  | The resume's language that employer prefers when job-seeker applies|
+| redirect_to  | text  | false| 255 | The redirect URL that candidates to be redirected to the relevant application page on their career site to Apply|
+| type_working_id  | choice | true |  | The type workings of the job posting|
+| job_working_location1 | integer | required | |The first companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location2 | integer | optional | |The second companyLocationId of the job working location. At lease one job working location is required. |
+| job_working_location3 | integer | optional | |The third companyLocationId of the job working location. At lease one job working location is required. |
 
 #### Gets the job form’s details (V2)
 
