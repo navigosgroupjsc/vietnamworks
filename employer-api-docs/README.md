@@ -9,6 +9,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.4] - 2021-04-27
+
+### Changed
+- Support to show and hide your logo as well as your company's name
+
+### Deprecated
+- The field `is_show_logo` will be deleted in the future
+
+### Note
+- The field `is_show_logo` will be changed according to `is_anonymous`
+
 ## [2.0.3] - 2021-01-21
 
 ### Added
@@ -971,7 +982,9 @@ Accept-Charset: utf-8
         "type_working_id": 1,
         "job_working_location1": 446,
         "job_working_location2": 379,
-        "job_working_location3": 459
+        "job_working_location3": 459,
+        "is_anonymous": 1,
+        "is_show_logo": 0
     }
 }
 ```
@@ -1012,6 +1025,8 @@ With the following fields:
 | job_working_location1 | integer | required | The first companyLocationId of the job working location. At lease one job working location is required. |
 | job_working_location2 | integer | optional | The second companyLocationId of the job working location. At lease one job working location is required. |
 | job_working_location3 | integer | optional | The third companyLocationId of the job working location. At lease one job working location is required. |
+| is_show_logo | integer | required | Show or hide logo of the your company for the job. |
+| is_anonymous | integer | required | Show or hide logo and name of your company for the job. |
 
 The response is a location header that points to the URL of the newly created job. Example response:
 
@@ -1204,6 +1219,8 @@ Accept-Charset: utf-8
         "job_working_location1": 446,
         "job_working_location2": 379,
         "job_working_location3": 459,
+        "is_anonymous": 1,
+        "is_show_logo": 0
     }
 }
 ```
@@ -1243,6 +1260,8 @@ With the following fields:
 | job_working_location1 | integer | required | The first companyLocationId of the job working location. At lease one job working location is required. |
 | job_working_location2 | integer | optional | The second companyLocationId of the job working location. At lease one job working location is required. |
 | job_working_location3 | integer | optional | The third companyLocationId of the job working location. At lease one job working location is required. |
+| is_show_logo | integer | required | Show or hide logo of the your company for the job. |
+| is_anonymous | integer | required | Show or hide logo and name of your company for the job. |
 
 The response won't be returning a body. Example response:
 
