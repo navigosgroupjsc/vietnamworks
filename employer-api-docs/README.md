@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.5] - 2022-07-14
+
+### Changed
+- Add rule Email & number (>7) in job description & requirement field is *NOT* allowed. 
+- Add rule With jobs have level = *intern* OR *fresher*, emp can't input same text of the following field: job_title, job_description, job_requirements
+
 ## [2.0.4] - 2021-04-27
 
 ### Changed
