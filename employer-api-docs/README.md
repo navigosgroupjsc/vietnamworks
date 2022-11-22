@@ -9,6 +9,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.5] - 2022-11-22
+
+### Added
+- Add API to get meta categories such as Job Locations, Job Categories, etc [3.8. Meta Categories](#38-meta-categories)
+
 ## [2.0.4] - 2021-04-27
 
 ### Changed
@@ -106,6 +111,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
       - [Special Cases](#special-cases-3)
       - [3.7.4. Delete a company location](#374-delete-a-company-location)
       - [Special Cases](#special-cases-4)
+    - [3.8. Meta Categories](#38-meta-categories)
+      - [3.8.1. List of Job Levels](#381-list-of-job-levels)
+      - [3.8.2. List of Job Categories](#382-list-of-job-categories)
+      - [3.8.3. List of Job Locations](#383-list-of-job-locations)
+      - [3.8.4. List of Job Working Types](#384-list-of-job-working-types)
+      - [3.8.5. List of Company Benefits](#385-list-of-company-benefits)
+      - [3.8.6. List of Job Salary Ranges](#386-list-of-job-salary-ranges)
+
   - [4. Testing](#4-testing)
 
 ## 1. Overview
@@ -1914,6 +1927,349 @@ Content-Type: application/json; charset=utf-8
     }
 }
 ```
+
+### 3.8. Meta Categories
+**Provide a list of reference meta such as Job Levels, Job Categories, Job Locations, etc.**
+
+#### 3.8.1. List of Job Levels
+***Get list of job levels***
+
+A request looks like this:
+
+```
+GET https://ms.vietnamworks.com/meta/v1.1/job-levels
+```
+
+Example request:
+
+```
+GET meta/v1.1/job-levels HTTP/1.1
+Host: ms.vietnamworks.com
+```
+
+The response will be list of **Job Levels**
+ Example response:
+
+```json
+{
+	"data": [
+		{
+			"type": "jobLevel",
+			"id": 8,
+			"attributes": {
+				"nameVi": "Thực tập sinh/Sinh viên",
+				"nameEn": "Intern/Student"
+			}
+		},
+		{
+			"type": "jobLevel",
+			"id": 1,
+			"attributes": {
+				"nameVi": "Mới Tốt Nghiệp",
+				"nameEn": "Fresher/Entry level"
+			}
+		}
+	],
+	"meta": {
+		"statusCode": 200
+	},
+	"links": {
+		"self": "/meta/v1.1/job-levels"
+	}
+}
+```
+
+Response:
+
+| Key           | Description                                                                                                          |
+| ---------------------|----------------------------------------------------------------------------------------------------------------------|
+| id            | Job Level Id                                                                      |
+| nameVi   | Vietnamese Job Level Name                                                          |
+| nameEn       | English Job Level Name                                                              |
+
+#### 3.8.2. List of Job Categories
+***Get list of job Categories***
+
+A request looks like this:
+
+```
+GET https://ms.vietnamworks.com/meta/v1.1/industries
+```
+
+Example request:
+
+```
+GET meta/v1.1/industries HTTP/1.1
+Host: ms.vietnamworks.com
+```
+
+The response will be list of **Job Categories**
+ Example response:
+
+```json
+{
+	"data": [
+		{
+			"type": "industry",
+			"id": 83,
+			"attributes": {
+				"nameVi": "An toàn lao động",
+				"nameEn": "HSE"
+			}
+		},
+		{
+			"type": "industry",
+			"id": 78,
+			"attributes": {
+				"nameVi": "Bác sĩ",
+				"nameEn": "Doctors"
+			}
+		}
+	],
+	"meta": {
+		"statusCode": 200
+	},
+	"links": {
+		"self": "/meta/v1.1/industries"
+	}
+}
+```
+
+Response:
+
+| Key           | Description                                                                                                          |
+| ---------------------|----------------------------------------------------------------------------------------------------------------------|
+| id            | Job Category Id                                                                      |
+| nameVi   | Vietnamese Job Category Name                                                          |
+| nameEn       | English Job Category Name                                                              |
+
+#### 3.8.3. List of Job Locations
+***Get list of job Locations***
+
+A request looks like this:
+
+```
+GET https://ms.vietnamworks.com/meta/v1.1/cities
+```
+
+Example request:
+
+```
+GET meta/v1.1/cities HTTP/1.1
+Host: ms.vietnamworks.com
+```
+
+The response will be list of **Job Locations**
+ Example response:
+
+```json
+{
+	"data": [
+		{
+			"type": "city",
+			"id": 29,
+			"attributes": {
+				"nameVi": "Hồ Chí Minh",
+				"nameEn": "Ho Chi Minh"
+			}
+		},
+		{
+			"type": "city",
+			"id": 24,
+			"attributes": {
+				"nameVi": "Hà Nội",
+				"nameEn": "Ha Noi"
+			}
+		}
+	],
+	"meta": {
+		"statusCode": 200
+	},
+	"links": {
+		"self": "/meta/v1.1/cites"
+	}
+}
+```
+
+Response:
+
+| Key           | Description                                                                                                          |
+| ---------------------|----------------------------------------------------------------------------------------------------------------------|
+| id            | Job Location Id                                                                      |
+| nameVi   | Vietnamese Job Location Name                                                          |
+| nameEn       | English Job Location Name                                                              |
+
+#### 3.8.4. List of Job Working Types
+***Get list of job Working Types***
+
+A request looks like this:
+
+```
+GET https://ms.vietnamworks.com/meta/v1.1/type-workings
+```
+
+Example request:
+
+```
+GET meta/v1.1/type-workings HTTP/1.1
+Host: ms.vietnamworks.com
+```
+
+The response will be list of **Job Working Types**
+ Example response:
+
+```json
+{
+	"data": [
+		{
+			"type": "jobLevel",
+			"id": 1,
+			"attributes": {
+				"nameVi": "Toàn thời gian",
+				"nameEn": "Full-time"
+			}
+		},
+		{
+			"type": "jobLevel",
+			"id": 2,
+			"attributes": {
+				"nameVi": "Bán thời gian",
+				"nameEn": "Part-time"
+			}
+		}
+	],
+	"meta": {
+		"statusCode": 200
+	},
+	"links": {
+		"self": "/meta/v1.1/type-workings"
+	}
+}
+```
+
+Response:
+
+| Key           | Description                                                                                                          |
+| ---------------------|----------------------------------------------------------------------------------------------------------------------|
+| id            | Job Working Type Id                                                                      |
+| nameVi   | Vietnamese Job Working Type Name                                                          |
+| nameEn       | English Job Working Type Name                                                              |
+
+#### 3.8.5. List of Company Benefits
+***Get list of Company Benefits***
+
+A request looks like this:
+
+```
+GET https://ms.vietnamworks.com/meta/v1.1/benefits
+```
+
+Example request:
+
+```
+GET meta/v1.1/benefits HTTP/1.1
+Host: ms.vietnamworks.com
+```
+
+The response will be list of **Company Benefits**
+ Example response:
+
+```json
+{
+	"data": [
+		{
+			"type": "benefit",
+			"id": 1,
+			"attributes": {
+				"nameVi": "Thưởng",
+				"nameEn": "Bonus",
+				"iconName": "fa-dollar"
+			}
+		},
+		{
+			"type": "benefit",
+			"id": 2,
+			"attributes": {
+				"nameVi": "Khám sức khoẻ",
+				"nameEn": "Healthcare Plan",
+				"iconName": "fa-user-md"
+			}
+		}
+	],
+	"meta": {
+		"statusCode": 200
+	},
+	"links": {
+		"self": "/meta/v1.1/benefits"
+	}
+}
+```
+
+Response:
+
+| Key           | Description                                                                                                          |
+| ---------------------|----------------------------------------------------------------------------------------------------------------------|
+| id            | Company Benefit Id                                                                      |
+| nameVi   | Vietnamese Company Benefit Name                                                          |
+| nameEn       | English Company Benefit Name                                                              |
+| iconName       | Company Benefit Icon                                                              |
+
+#### 3.8.6. List of Job Salary Ranges
+***Get list of Job Salary Ranges***
+
+A request looks like this:
+
+```
+GET https://ms.vietnamworks.com/meta/v1.1/salary-ranges
+```
+
+Example request:
+
+```
+GET meta/v1.1/salary-ranges HTTP/1.1
+Host: ms.vietnamworks.com
+```
+
+The response will be list of **Job Salary Ranges**
+ Example response:
+
+```json
+{
+	"data": [
+		{
+			"type": "jobLevel",
+			"id": 1,
+			"attributes": {
+				"minSalary": 0,
+				"maxSalary": 500
+			}
+		},
+		{
+			"type": "jobLevel",
+			"id": 2,
+			"attributes": {
+				"minSalary": 500,
+				"maxSalary": 1000
+			}
+		}
+	],
+	"meta": {
+		"statusCode": 200
+	},
+	"links": {
+		"self": "/meta/v1.1//salary-ranges"
+	}
+}
+```
+
+Response:
+
+| Key           | Description                                                                                                          |
+| ---------------------|----------------------------------------------------------------------------------------------------------------------|
+| id            | Job Salary Range Id                                                                      |
+| minSalary   | Minimum Job Salary (dollar unit)                                                          |
+| maxSalary       | Maximum Job Salary (dollar unit)                                                             |
+
 ## 4. Testing
 
 We have a sandbox environment for testing. All requests are made to endpoints beginning:
