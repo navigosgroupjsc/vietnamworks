@@ -864,7 +864,7 @@ Content-Type: application/json; charset=utf-8
       }
     ],
     "page": 1,
-    "total": 3
+    "total": 1
   }
 }
 ```
