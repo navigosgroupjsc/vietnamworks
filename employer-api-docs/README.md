@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [2.0.6] - 2022-12-09
+
+### Added
+- Add API to get applications from a specific Job [Job Applications](#jobs-applications-list)
 
 ## [2.0.5] - 2022-11-22
 
@@ -821,6 +825,72 @@ Possible errors:
 | 401 Unauthorized     | The `accessToken` is invalid. |
 | 403 Forbidden        | Lacks the `jobview` scope or has been revoked. |
 | 404 Not Found        | The `jobId` is invalid or not yours job. |
+
+#### Job's Applications list
+
+```
+GET https://api.vietnamworks.com/api/rest/v1/applications/{jobId}?page=1&lang=1
+```
+
+Parameters Query:
+| Field | Type | Description |
+| ------------|--------|-------------------------------------------------|
+| jobId | int | Job ID. |
+| page | int | Current page. |
+| lang | int | Language ID. `1:VN` `2 EN`. |
+
+The response is a full details of the response.
+Example response:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+{
+  "code": 200,
+  "data": {
+    "items": [
+      {
+        "email": "x7@yopmail.com",
+        "jobTitle": "Engineering",
+        "expectedPosition": "Engineering",
+        "mostRecentJobTitle": "5000 characters remaining 1",
+        "fullName": "fffq sevent online",
+        "createdOn": "2022-12-08 18:23:54",
+        "yearsExperience": "22",
+        "resumeTitle": "Engineering",
+        "avatar": "https://staging-images.vietnamworks.com/pictureofresume/f8/1659690228172164182.png",
+        "cellphone": "+84-777666666",
+        "statusName": "Receive resume"
+      }
+    ],
+    "page": 1,
+    "total": 3
+  }
+}
+```
+
+Candidate Object Item:
+| Field | Type | Description |
+| ------------|--------|-------------------------------------------------|
+| email | string | The email of candidate. |
+| jobTitle | string | The job title on Vietnamworks. |
+| expectedPosition | string | The expected position of candidate. |
+| mostRecentJobTitle | string | The candidate's most recent job title. |
+| fullName | string | The candidate's name. |
+| applyOn | string | Candidate's apply time. |
+| yearsExperience | string | Candidate experience. |
+| resumeTitle | string | Resume title of candidate on vietnamworks site |
+| avatar | string | Candidate's avatar.|
+| cellphone | string | Candidate's cellphone. |
+| statusName | string | Candidate's current hiring process status. |
+
+Possible Errors:
+| Status | Description |
+| ------------|--------|
+|401 Unauthorized | The `accessToken` is invalid.|
+|403 Forbidden | Lacks the `jobview` scope or has been revoked. |
+|404 Not Found | The `jobId` is invalid or not yours job. |
+
 
 ### 3.3. Posts a Job
 
