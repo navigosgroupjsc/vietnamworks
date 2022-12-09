@@ -91,6 +91,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - [3.2. Job Listing and Job Details](#32-job-listing-and-job-details)
       - [Lists the employer’s online job posts](#lists-the-employers-online-job-posts)
       - [Jobs posting details](#jobs-posting-details)
+      - [Job Applications](#jobs-applications-list)
     - [3.3. Posts a Job](#33-posts-a-job)
       - [Creates a draft job post](#creates-a-draft-job-post)
       - [Creates a job post (V2)](#creates-a-job-post-v2)
