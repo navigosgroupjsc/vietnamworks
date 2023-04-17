@@ -861,7 +861,9 @@ Content-Type: application/json; charset=utf-8
         "resumeTitle": "Engineering",
         "avatar": "https://staging-images.vietnamworks.com/pictureofresume/f8/1659690228172164182.png",
         "cellphone": "+84-777666666",
-        "statusName": "Receive resume"
+        "statusName": "Receive resume",
+	"linkDetail": "https://staging-employer.vietnamworks.com/v2/application/detail/2/10252239",
+        "linkDownload": "https://staging-employer.vietnamworks.com/api/external/application/download/10252239"
       }
     ],
     "page": 1,
@@ -884,6 +886,8 @@ Candidate Object Item:
 | avatar | string | Candidate's avatar.|
 | cellphone | string | Candidate's cellphone. |
 | statusName | string | Candidate's current hiring process status. |
+| linkDetail | string | Candidate's detail page URL. |
+| linkDownload | string | Downloadable link. |
 
 Possible Errors:
 | Status | Description |
