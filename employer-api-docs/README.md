@@ -2349,6 +2349,6 @@ Response:
 
 We have a sandbox environment for testing. All requests are made to endpoints beginning:
 
-`https://api-staging.vietnamworks.com/`
+`https://release-api.vietnamworks.com/`
 
 Please feel free to contact us for a testing account.
