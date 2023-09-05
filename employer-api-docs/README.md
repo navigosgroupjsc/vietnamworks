@@ -503,8 +503,6 @@ Where a Job Form object is:
 | -----------|--------|--------|--------|----------------------------------------------|
 | job_title  | text | true | 100 | The title of the job posting.|
 | job_level  | choice | true |  | The level of the job posting.                  |
-| job_categories| choice | true |  | Industries of the job posting. Choose maximum 3 industries|
-| job_category_orders  | text | true  |  | The list of industries separated by commas in order of display|
 | job_locations| choice | true |  | Locations of the job posting. Choose maximum 3 cities|
 | minimum_salary| text | true |  | Salary range from|
 | maximum_salary| text | true |  | Salary range to|
@@ -1170,11 +1168,6 @@ Accept-Charset: utf-8
     "job": {
         "job_title": "Fresher Software Test Engineer",
         "job_level": 5,
-        "job_categories": [
-            35,
-            70
-        ],
-        "job_category_orders": "35,70",
         "job_locations": [
             29,
             24
@@ -1208,7 +1201,9 @@ Accept-Charset: utf-8
         "job_working_location2": 379,
         "job_working_location3": 459,
         "is_anonymous": 1,
-        "is_show_logo": 0
+        "is_show_logo": 0,
+        "company_industry": 1,
+        "job_function": 2
     }
 }
 ```
@@ -1530,11 +1525,6 @@ Accept-Charset: utf-8
     "job": {
         "job_title": "Fresher Software Test Engineer",
         "job_level": 5,
-        "job_categories": [
-            35,
-            70
-        ],
-        "job_category_orders": "35,70",
         "job_locations": [
             29,
             24
@@ -1566,7 +1556,9 @@ Accept-Charset: utf-8
         "job_working_location2": 379,
         "job_working_location3": 459,
         "is_anonymous": 1,
-        "is_show_logo": 0
+        "is_show_logo": 0,
+        "company_industry": 1,
+        "job_function": 2
     }
 }
 ```
