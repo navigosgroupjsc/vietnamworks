@@ -1,6 +1,6 @@
 # Vietnamworks’s API documentation
 
-This repository contains the documentation for [Vietnamworks](http://www.vietnamworks.com)’s API.
+This content has moved to [Vietnamworks Integration Documents](http://developers.vietnamworks.com).
 
 ****
 # Changelog
@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [4.0.0] - 2024-04-24
+
+See updated content at [Vietnamworks Integration Documents](http://developers.vietnamworks.com).
 
 ## [3.0.0] - 2023-09-01
 
